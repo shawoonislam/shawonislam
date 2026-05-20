@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jerin Hany Tahsina Jotee — English Instructor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --warm-white: #FDF9F4;
+    --blush: #E8C4B8;
+    --rose: #C9796A;
+    --deep-rose: #9E4A3C;
+    --sage: #8BA89A;
+    --deep-sage: #4A6B5D;
+    --gold: #C9A96E;
+    --deep-gold: #A07840;
+    --charcoal: #2C2420;
+    --mid-brown: #6B4E3D;
+    --light-text: #8B7355;
+    --glass-bg: rgba(255,255,255,0.55);
+    --glass-border: rgba(201,169,110,0.22);
+    --shadow-soft: 0 8px 40px rgba(44,36,32,0.08);
+    --shadow-card: 0 4px 24px rgba(44,36,32,0.10);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--cream);
+    color: var(--charcoal);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* ─── NOISE TEXTURE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9999; opacity: 0.4;
+  }
+
+  /* ─── NAVBAR ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.2rem 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    backdrop-filter: blur(18px);
+    background: rgba(250,247,242,0.82);
+    border-bottom: 1px solid var(--glass-border);
+    transition: all 0.4s ease;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem; font-weight: 500;
+    color: var(--charcoal); letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--rose); font-style: italic; }
+  .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem; font-weight: 400;
+    color: var(--light-text); text-decoration: none;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    transition: color 0.3s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -3px; left: 0;
+    width: 0; height: 1px; background: var(--rose);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--rose); }
+  .nav-links a:hover::after { width: 100%; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--charcoal); transition: 0.3s; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 5% 5rem;
+    gap: 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: 
+      radial-gradient(ellipse 70% 70% at 70% 30%, rgba(232,196,184,0.28) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 60% at 20% 80%, rgba(139,168,154,0.18) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 40% at 85% 85%, rgba(201,169,110,0.14) 0%, transparent 50%);
+  }
+  .hero-decor {
+    position: absolute; top: 10%; right: 8%;
+    width: 320px; height: 320px; border-radius: 50%;
+    border: 1px solid rgba(201,121,106,0.15);
+    animation: float 8s ease-in-out infinite;
+  }
+  .hero-decor::before {
+    content: ''; position: absolute; inset: 20px;
+    border-radius: 50%; border: 1px solid rgba(201,169,110,0.12);
+  }
+  @keyframes float { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-20px) rotate(5deg)} }
+
+  .hero-content { position: relative; z-index: 1; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--rose); font-weight: 500;
+    margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-tag::before { content: ''; width: 32px; height: 1px; background: var(--rose); }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5vw, 4.4rem);
+    font-weight: 300; line-height: 1.15;
+    color: var(--charcoal); margin-bottom: 0.4rem;
+    opacity: 0; animation: fadeUp 0.8s 0.35s forwards;
+  }
+  .hero-name em { font-style: italic; color: var(--rose); }
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    font-weight: 400; line-height: 1.6;
+    color: var(--mid-brown); margin: 1.2rem 0 1.8rem;
+    max-width: 500px;
+    opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
+  }
+  .hero-intro {
+    font-size: 0.95rem; color: var(--light-text);
+    max-width: 420px; margin-bottom: 2.5rem; line-height: 1.85;
+    opacity: 0; animation: fadeUp 0.8s 0.65s forwards;
+  }
+  .hero-ctas {
+    display: flex; gap: 1rem; align-items: center;
+    opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+  }
+  .btn-primary {
+    padding: 0.9rem 2.2rem;
+    background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+    color: white; border: none; border-radius: 50px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+    font-weight: 500; letter-spacing: 0.06em;
+    cursor: pointer; text-decoration: none;
+    box-shadow: 0 6px 24px rgba(158,74,60,0.30);
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(158,74,60,0.38); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.85rem; color: var(--mid-brown);
+    text-decoration: none; font-weight: 400;
+    transition: gap 0.3s;
+  }
+  .btn-secondary:hover { gap: 0.9rem; color: var(--rose); }
+  .btn-secondary::after { content: '→'; }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3.5rem;
+    padding-top: 2.5rem; border-top: 1px solid rgba(201,169,110,0.2);
+    opacity: 0; animation: fadeUp 0.8s 0.95s forwards;
+  }
+  .stat-item { }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 600; color: var(--rose);
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.78rem; color: var(--light-text); letter-spacing: 0.08em; margin-top: 0.3rem; }
+
+  /* Hero Visual */
+  .hero-visual {
+    position: relative; z-index: 1;
+    display: flex; justify-content: center; align-items: center;
+    opacity: 0; animation: fadeIn 1.2s 0.4s forwards;
+  }
+  .hero-img-wrap {
+    position: relative; width: 380px; height: 480px;
+  }
+  .hero-img-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(145deg, var(--blush) 0%, rgba(232,196,184,0.5) 50%, rgba(139,168,154,0.3) 100%);
+    border-radius: 60% 40% 55% 45% / 50% 55% 45% 50%;
+    animation: morphBlob 10s ease-in-out infinite;
+  }
+  @keyframes morphBlob {
+    0%,100%{border-radius: 60% 40% 55% 45%/50% 55% 45% 50%}
+    33%{border-radius: 45% 55% 40% 60%/55% 45% 60% 40%}
+    66%{border-radius: 55% 45% 65% 35%/40% 60% 45% 55%}
+  }
+  .hero-img-card {
+    position: absolute; inset: 24px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50% 40% 45% 45% / 45% 50% 40% 48%;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    overflow: hidden;
+  }
+  .hero-avatar-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center; gap: 1rem;
+    background: linear-gradient(160deg, rgba(232,196,184,0.4), rgba(139,168,154,0.2));
+  }
+  .avatar-initials {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4.5rem; font-weight: 300; color: var(--deep-rose);
+    line-height: 1; letter-spacing: 0.05em;
+  }
+  .avatar-title {
+    font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--mid-brown); font-weight: 400;
+  }
+
+  .hero-badge {
+    position: absolute; bottom: 20px; left: -20px;
+    background: white; border-radius: 16px;
+    padding: 0.9rem 1.4rem;
+    box-shadow: var(--shadow-card);
+    display: flex; align-items: center; gap: 0.75rem;
+    animation: float 6s 1s ease-in-out infinite;
+  }
+  .badge-icon { font-size: 1.4rem; }
+  .badge-text { font-size: 0.78rem; line-height: 1.4; }
+  .badge-text strong { display: block; color: var(--charcoal); font-size: 0.85rem; }
+  .badge-text span { color: var(--light-text); }
+
+  .hero-badge2 {
+    position: absolute; top: 30px; right: -15px;
+    background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+    border-radius: 14px; padding: 0.8rem 1.2rem;
+    color: white;
+    box-shadow: 0 6px 24px rgba(158,74,60,0.3);
+    animation: float 7s 2s ease-in-out infinite reverse;
+  }
+  .badge2-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 600; line-height: 1;
+  }
+  .badge2-label { font-size: 0.7rem; opacity: 0.9; letter-spacing: 0.1em; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+  /* ─── SECTION COMMONS ─── */
+  section { padding: 6rem 5%; position: relative; }
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--rose); font-weight: 500;
+    display: flex; align-items: center; gap: 0.7rem;
+    margin-bottom: 0.8rem;
+  }
+  .section-label::before { content: ''; width: 28px; height: 1px; background: var(--rose); }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 400; line-height: 1.2;
+    color: var(--charcoal); margin-bottom: 1rem;
+  }
+  .section-title em { font-style: italic; color: var(--rose); }
+  .section-sub {
+    font-size: 0.95rem; color: var(--light-text);
+    max-width: 520px; line-height: 1.8;
+  }
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── ABOUT ─── */
+  .about { background: var(--warm-white); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1.2fr;
+    gap: 5rem; align-items: center; margin-top: 3.5rem;
+  }
+  .about-visual { position: relative; }
+  .about-img-frame {
+    width: 100%; aspect-ratio: 4/5;
+    background: linear-gradient(145deg, rgba(232,196,184,0.5), rgba(201,169,110,0.2));
+    border-radius: 40% 60% 55% 45% / 45% 50% 50% 55%;
+    display: flex; justify-content: center; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .about-img-inner {
+    width: 85%; height: 85%;
+    background: linear-gradient(160deg, rgba(232,196,184,0.6), rgba(139,168,154,0.3));
+    border-radius: 38% 62% 52% 48% / 48% 47% 53% 52%;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center; gap: 0.8rem;
+  }
+  .about-monogram {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; color: var(--deep-rose); font-weight: 300;
+    font-style: italic; line-height: 1;
+  }
+
+  .about-quote-card {
+    position: absolute; bottom: -18px; right: -18px;
+    background: white; border-radius: 16px;
+    padding: 1.2rem 1.5rem; max-width: 230px;
+    box-shadow: var(--shadow-card);
+    border-left: 3px solid var(--rose);
+  }
+  .about-quote-card p {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem; font-style: italic;
+    color: var(--mid-brown); line-height: 1.6;
+  }
+  .about-quote-card span { font-size: 0.72rem; color: var(--light-text); margin-top: 0.5rem; display: block; }
+
+  .about-content { }
+  .about-bio-para {
+    font-size: 0.96rem; color: var(--mid-brown);
+    line-height: 1.9; margin-bottom: 1.4rem;
+  }
+  .about-highlights {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem; margin-top: 2rem;
+  }
+  .highlight-item {
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px; padding: 1.2rem 1.4rem;
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .highlight-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-card); }
+  .hi-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+  .hi-text strong { display: block; font-size: 0.85rem; color: var(--charcoal); margin-bottom: 0.2rem; }
+  .hi-text span { font-size: 0.78rem; color: var(--light-text); }
+
+  /* ─── QUALIFICATIONS ─── */
+  .qualifications { background: var(--cream); }
+  .qual-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; margin-top: 3.5rem;
+  }
+  .qual-section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 400; color: var(--charcoal);
+    margin-bottom: 1.8rem;
+    display: flex; align-items: center; gap: 0.7rem;
+  }
+  .qual-section-title::after { content: ''; flex: 1; height: 1px; background: var(--glass-border); }
+
+  .timeline { position: relative; padding-left: 1.5rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 8px; bottom: 8px;
+    width: 1px; background: linear-gradient(to bottom, var(--rose), transparent);
+  }
+  .timeline-item {
+    position: relative; margin-bottom: 2rem;
+    padding: 1.4rem 1.6rem;
+    background: white; border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(255,255,255,0.8);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .timeline-item:hover { transform: translateX(6px); box-shadow: var(--shadow-card); }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -1.88rem; top: 1.6rem;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--rose); border: 2px solid white;
+    box-shadow: 0 0 0 3px rgba(201,121,106,0.2);
+  }
+  .tl-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.3rem;
+  }
+  .tl-institution { font-size: 0.85rem; color: var(--mid-brown); margin-bottom: 0.2rem; }
+  .tl-meta {
+    font-size: 0.75rem; color: var(--light-text); letter-spacing: 0.08em;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .tl-meta::before { content: '◆'; font-size: 0.5rem; color: var(--rose); }
+
+  .exp-card {
+    background: linear-gradient(135deg, rgba(232,196,184,0.25), rgba(139,168,154,0.15));
+    border: 1px solid var(--glass-border);
+    border-radius: 20px; padding: 1.8rem 2rem;
+    margin-bottom: 1.5rem;
+    position: relative; overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .exp-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card); }
+  .exp-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--rose), var(--gold));
+  }
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.3rem;
+  }
+  .exp-place { font-size: 0.88rem; color: var(--mid-brown); margin-bottom: 0.5rem; }
+  .exp-duration {
+    display: inline-block; padding: 0.2rem 0.8rem;
+    background: rgba(201,121,106,0.12); border-radius: 20px;
+    font-size: 0.75rem; color: var(--rose); letter-spacing: 0.06em;
+  }
+
+  /* ─── SERVICES ─── */
+  .services { background: var(--charcoal); color: white; }
+  .services .section-label { color: var(--gold); }
+  .services .section-label::before { background: var(--gold); }
+  .services .section-title { color: white; }
+  .services .section-title em { color: var(--blush); }
+  .services .section-sub { color: rgba(255,255,255,0.55); }
+
+  .services-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem; margin-top: 3.5rem;
+  }
+  .service-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 22px; padding: 2.2rem 1.8rem;
+    position: relative; overflow: hidden;
+    transition: all 0.4s ease; cursor: default;
+  }
+  .service-card:hover {
+    background: rgba(232,196,184,0.1);
+    border-color: rgba(232,196,184,0.25);
+    transform: translateY(-6px);
+  }
+  .service-card::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(145deg, transparent 40%, rgba(201,169,110,0.06));
+    pointer-events: none;
+  }
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.8rem; color: var(--gold); letter-spacing: 0.15em;
+    margin-bottom: 1.5rem; display: block;
+  }
+  .service-icon { font-size: 2rem; margin-bottom: 1.2rem; display: block; }
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 400; color: white;
+    margin-bottom: 0.8rem; line-height: 1.3;
+  }
+  .service-desc { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.75; }
+  .service-link {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    margin-top: 1.5rem; font-size: 0.8rem; color: var(--gold);
+    text-decoration: none; transition: gap 0.3s;
+  }
+  .service-link:hover { gap: 0.8rem; }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials { background: var(--warm-white); overflow: hidden; }
+  .testimonials-header { margin-bottom: 3.5rem; }
+  .reviews-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .review-card {
+    background: white; border-radius: 22px;
+    padding: 2rem 1.8rem;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(255,255,255,0.9);
+    position: relative; overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .review-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-card); }
+  .review-card.featured {
+    background: linear-gradient(145deg, var(--deep-rose), var(--rose));
+    color: white;
+  }
+  .review-quote-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; line-height: 0.8;
+    color: var(--blush); opacity: 0.4; margin-bottom: 0.5rem;
+    display: block;
+  }
+  .review-card.featured .review-quote-mark { color: rgba(255,255,255,0.3); }
+  .review-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem; font-style: italic;
+    color: var(--mid-brown); line-height: 1.8; margin-bottom: 1.5rem;
+  }
+  .review-card.featured .review-text { color: rgba(255,255,255,0.9); }
+  .reviewer {
+    display: flex; align-items: center; gap: 0.9rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(201,169,110,0.15);
+  }
+  .review-card.featured .reviewer { border-top-color: rgba(255,255,255,0.2); }
+  .reviewer-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 600; flex-shrink: 0;
+  }
+  .avatar-a { background: rgba(232,196,184,0.5); color: var(--deep-rose); }
+  .avatar-b { background: rgba(139,168,154,0.4); color: var(--deep-sage); }
+  .avatar-c { background: rgba(201,169,110,0.3); color: var(--deep-gold); }
+  .avatar-d { background: rgba(201,121,106,0.2); color: var(--rose); }
+  .avatar-e { background: rgba(74,107,93,0.2); color: var(--deep-sage); }
+  .review-card.featured .reviewer-avatar { background: rgba(255,255,255,0.2); color: white; }
+  .reviewer-name { font-size: 0.88rem; font-weight: 500; color: var(--charcoal); display: block; }
+  .review-card.featured .reviewer-name { color: white; }
+  .reviewer-class { font-size: 0.75rem; color: var(--light-text); }
+  .review-card.featured .reviewer-class { color: rgba(255,255,255,0.7); }
+  .stars { color: var(--gold); font-size: 0.75rem; margin-bottom: 0.8rem; }
+  .review-card.featured .stars { color: rgba(255,255,255,0.8); }
+
+  /* ─── CONTACT ─── */
+  .contact {
+    background: linear-gradient(160deg, var(--cream) 0%, rgba(232,196,184,0.15) 50%, var(--cream) 100%);
+  }
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1.2fr;
+    gap: 5rem; margin-top: 3.5rem; align-items: start;
+  }
+  .contact-info { }
+  .contact-cta {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; color: var(--mid-brown);
+    font-style: italic; line-height: 1.8;
+    margin: 1.2rem 0 2.5rem;
+  }
+  .contact-method {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1.1rem 1.4rem; border-radius: 14px;
+    background: white; box-shadow: var(--shadow-soft);
+    margin-bottom: 1rem;
+    transition: transform 0.3s;
+  }
+  .contact-method:hover { transform: translateX(5px); }
+  .cm-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: linear-gradient(135deg, rgba(232,196,184,0.5), rgba(201,121,106,0.2));
+    display: flex; justify-content: center; align-items: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .cm-label { font-size: 0.72rem; color: var(--light-text); letter-spacing: 0.08em; text-transform: uppercase; }
+  .cm-value { font-size: 0.9rem; color: var(--charcoal); font-weight: 500; }
+
+  .contact-form {
+    background: white; border-radius: 24px;
+    padding: 2.5rem; box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(255,255,255,0.9);
+  }
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; color: var(--charcoal);
+    margin-bottom: 0.4rem;
+  }
+  .form-subtitle { font-size: 0.85rem; color: var(--light-text); margin-bottom: 2rem; }
+  .form-group { margin-bottom: 1.3rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group label {
+    display: block; font-size: 0.75rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--light-text);
+    margin-bottom: 0.5rem; font-weight: 500;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%; padding: 0.85rem 1.1rem;
+    border: 1px solid rgba(201,169,110,0.25);
+    border-radius: 10px; font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; color: var(--charcoal);
+    background: var(--cream);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--rose);
+    box-shadow: 0 0 0 3px rgba(201,121,106,0.1);
+  }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .form-submit {
+    width: 100%; padding: 1rem;
+    background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+    color: white; border: none; border-radius: 12px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.92rem;
+    font-weight: 500; letter-spacing: 0.05em;
+    cursor: pointer; margin-top: 0.5rem;
+    transition: all 0.3s;
+    box-shadow: 0 6px 20px rgba(158,74,60,0.25);
+  }
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(158,74,60,0.32); }
+  .form-success {
+    display: none; text-align: center; padding: 1.5rem;
+    color: var(--deep-sage); font-size: 0.9rem;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--charcoal); color: rgba(255,255,255,0.6);
+    padding: 4rem 5% 2rem;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 3rem; padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 2rem;
+  }
+  .footer-brand { }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 400; color: white;
+    margin-bottom: 0.8rem;
+  }
+  .footer-logo span { color: var(--blush); font-style: italic; }
+  .footer-tagline { font-size: 0.85rem; line-height: 1.7; max-width: 280px; }
+  .footer-heading {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.2rem;
+  }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 0.6rem; }
+  .footer-links a {
+    color: rgba(255,255,255,0.5); text-decoration: none;
+    font-size: 0.87rem; transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--blush); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.78rem;
+  }
+  .footer-copy { color: rgba(255,255,255,0.35); }
+  .footer-copy span { color: var(--blush); }
+  .footer-made { color: rgba(255,255,255,0.25); font-size: 0.75rem; }
+
+  /* Divider line */
+  .section-divider {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, var(--rose), var(--gold));
+    border-radius: 2px; margin: 0 0 1.5rem;
+  }
+
+  /* ─── MOBILE NAV ─── */
+  .nav-menu { display: flex; }
+
+  /* ─── SCROLL INDICATOR ─── */
+  .scroll-indicator {
+    position: fixed; top: 0; left: 0;
+    height: 2px; background: linear-gradient(90deg, var(--rose), var(--gold));
+    z-index: 1000; transition: width 0.1s;
+    width: 0%;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero { grid-template-columns: 1fr; text-align: center; }
+    .hero-headline, .hero-intro { max-width: 100%; }
+    .hero-ctas { justify-content: center; }
+    .hero-stats { justify-content: center; }
+    .hero-visual { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-visual { display: none; }
+    .qual-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 5%; }
+    .nav-menu { 
+      display: none; position: fixed;
+      top: 65px; left: 0; right: 0; bottom: 0;
+      background: rgba(250,247,242,0.97);
+      backdrop-filter: blur(20px);
+      flex-direction: column; justify-content: center; align-items: center;
+      gap: 2rem; z-index: 99;
+    }
+    .nav-menu.open { display: flex; }
+    .nav-links { flex-direction: column; align-items: center; }
+    .nav-links a { font-size: 1rem; }
+    .hamburger { display: flex; }
+    section { padding: 4rem 5%; }
+    .hero { padding: 7rem 5% 4rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .about-highlights { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-indicator" id="scrollBar"></div>
+
+<!-- ─── NAVIGATION ─── -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">Jerin <span>Hany</span></a>
+  <div class="nav-menu" id="navMenu">
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#qualifications">Credentials</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-decor"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">English Instructor</div>
+    <h1 class="hero-name">Jerin Hany<br><em>Tahsina Jotee</em></h1>
+    <p class="hero-headline">"Helping Students Build Strong English Skills &amp; Grammar Confidence"</p>
+    <p class="hero-intro">
+      A dedicated and passionate English educator with 4.5 years of experience guiding school and college students toward fluency, clarity, and academic success — one lesson at a time.
+    </p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Contact Me</a>
+      <a href="#about" class="btn-secondary">Learn More</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">4.5+</div>
+        <div class="stat-label">Years Teaching</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">200+</div>
+        <div class="stat-label">Students Taught</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Institutions</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-img-wrap">
+      <div class="hero-img-bg"></div>
+      <div class="hero-img-card">
+        <div class="hero-avatar-placeholder">
+          <div class="avatar-initials">JH</div>
+          <div class="avatar-title">English Instructor</div>
+        </div>
+      </div>
+      <div class="hero-badge">
+        <div class="badge-icon">🎓</div>
+        <div class="badge-text">
+          <strong>Masters Degree</strong>
+          <span>Qualified Educator</span>
+        </div>
+      </div>
+      <div class="hero-badge2">
+        <div class="badge2-num">4.5</div>
+        <div class="badge2-label">yrs experience</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-visual reveal">
+      <div class="about-img-frame">
+        <div class="about-img-inner">
+          <div class="about-monogram">J</div>
+        </div>
+      </div>
+      <div class="about-quote-card">
+        <p>"Every student has the potential to master English — they just need the right guide."</p>
+        <span>— Jerin Hany Tahsina Jotee</span>
+      </div>
+    </div>
+    <div class="about-content reveal">
+      <div class="section-label">About Me</div>
+      <h2 class="section-title">A Teacher Who<br><em>Truly Cares</em></h2>
+      <div class="section-divider"></div>
+      <p class="about-bio-para">
+        My name is Jerin Hany Tahsina Jotee, and English is more than a subject I teach — it is a language I love. For over four and a half years, I have dedicated myself to helping school and college students discover their voice in English, overcome their fears of grammar, and build the confidence they need to succeed academically and beyond.
+      </p>
+      <p class="about-bio-para">
+        I believe that every student learns differently, which is why I tailor my teaching approach to meet each individual where they are. Whether a student is struggling with basic grammar rules or preparing for board examinations, I provide patient, structured, and encouraging guidance that makes learning both effective and enjoyable.
+      </p>
+      <p class="about-bio-para">
+        With a strong academic background — from SSC through HSC to a Masters degree — and hands-on experience at respected institutions including Technical School and College and Technical Teachers' Training College, I bring both theoretical expertise and practical insight to every classroom.
+      </p>
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <div class="hi-icon">📚</div>
+          <div class="hi-text">
+            <strong>Grammar Specialist</strong>
+            <span>Deep focus on English grammar mastery</span>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="hi-icon">🏫</div>
+          <div class="hi-text">
+            <strong>School & College</strong>
+            <span>Teaching diverse student levels</span>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="hi-icon">🌟</div>
+          <div class="hi-text">
+            <strong>Student-Centered</strong>
+            <span>Personalized learning approach</span>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="hi-icon">🎯</div>
+          <div class="hi-text">
+            <strong>Exam-Focused</strong>
+            <span>Board exam preparation expertise</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── QUALIFICATIONS ─── -->
+<section class="qualifications" id="qualifications">
+  <div class="reveal">
+    <div class="section-label">Credentials</div>
+    <h2 class="section-title">Education &<br><em>Experience</em></h2>
+    <p class="section-sub">A strong academic foundation paired with real-world classroom experience at leading institutions.</p>
+  </div>
+  <div class="qual-grid">
+    <!-- Education Timeline -->
+    <div class="reveal">
+      <div class="qual-section-title">🎓 Education</div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="tl-degree">Masters Degree</div>
+          <div class="tl-institution">Graduate Studies in English</div>
+          <div class="tl-meta">Highest Academic Qualification</div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-degree">HSC — Higher Secondary Certificate</div>
+          <div class="tl-institution">Higher Secondary Level</div>
+          <div class="tl-meta">Secondary & Higher Education</div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-degree">SSC — Secondary School Certificate</div>
+          <div class="tl-institution">Secondary Level Foundation</div>
+          <div class="tl-meta">Foundation of Academic Excellence</div>
+        </div>
+      </div>
+    </div>
+    <!-- Teaching Experience -->
+    <div class="reveal">
+      <div class="qual-section-title">💼 Teaching Experience</div>
+      <div class="exp-card">
+        <div class="exp-role">English Instructor</div>
+        <div class="exp-place">Technical School and College</div>
+        <div class="exp-duration">Active Teaching Position</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-role">English Instructor</div>
+        <div class="exp-place">Technical Teachers' Training College</div>
+        <div class="exp-duration">Active Teaching Position</div>
+      </div>
+      <div class="exp-card" style="background: linear-gradient(135deg, rgba(201,121,106,0.12), rgba(201,169,110,0.08));">
+        <div class="exp-role">4.5+ Years Combined Experience</div>
+        <div class="exp-place">School &amp; College Level • English Grammar Specialization</div>
+        <div class="exp-duration">2020 — Present</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ─── -->
+<section class="services" id="services">
+  <div class="reveal">
+    <div class="section-label">What I Offer</div>
+    <h2 class="section-title">My Teaching<br><em>Services</em></h2>
+    <p class="section-sub">Comprehensive English instruction designed to build skills, boost confidence, and achieve results.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-num">01</span>
+      <span class="service-icon">📖</span>
+      <div class="service-name">School English</div>
+      <p class="service-desc">Structured English lessons tailored for school students, covering reading, writing, grammar, and comprehension to build a strong academic foundation.</p>
+      <a href="#contact" class="service-link">Enquire →</a>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-num">02</span>
+      <span class="service-icon">🏛️</span>
+      <div class="service-name">College English</div>
+      <p class="service-desc">Advanced English instruction for college-level students focused on academic writing, critical analysis, and language proficiency required for higher studies.</p>
+      <a href="#contact" class="service-link">Enquire →</a>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-num">03</span>
+      <span class="service-icon">✏️</span>
+      <div class="service-name">English Grammar Support</div>
+      <p class="service-desc">Dedicated grammar sessions covering tenses, parts of speech, sentence structure, punctuation, and all core grammar concepts with practical exercises.</p>
+      <a href="#contact" class="service-link">Enquire →</a>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-num">04</span>
+      <span class="service-icon">🎯</span>
+      <div class="service-name">Exam Preparation</div>
+      <p class="service-desc">Focused preparation for SSC and HSC board examinations with past paper practice, marking scheme guidance, and proven exam strategies.</p>
+      <a href="#contact" class="service-link">Enquire →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ─── -->
+<section class="testimonials" id="reviews">
+  <div class="testimonials-header reveal">
+    <div class="section-label">Student Reviews</div>
+    <h2 class="section-title">Words from My<br><em>Students</em></h2>
+    <p class="section-sub">Genuine feedback from students whose English journey I have had the privilege of guiding.</p>
+  </div>
+  <div class="reviews-grid">
+
+    <div class="review-card reveal">
+      <div class="stars">★★★★★</div>
+      <span class="review-quote-mark">"</span>
+      <p class="review-text">Before I started with Jerin Ma'am, grammar felt impossible. She explained every rule so clearly and patiently that now I actually enjoy English. My SSC results improved dramatically.</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar avatar-a">R</div>
+        <div>
+          <span class="reviewer-name">Rania Sultana</span>
+          <span class="reviewer-class">SSC Candidate, Class 10</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card featured reveal">
+      <div class="stars">★★★★★</div>
+      <span class="review-quote-mark">"</span>
+      <p class="review-text">Jerin Ma'am doesn't just teach — she genuinely cares about every student's progress. Her grammar sessions completely changed how I approach the English paper. I scored an A+ in my HSC.</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">F</div>
+        <div>
+          <span class="reviewer-name">Farhan Ahmed</span>
+          <span class="reviewer-class">HSC Graduate, Science Group</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card reveal">
+      <div class="stars">★★★★★</div>
+      <span class="review-quote-mark">"</span>
+      <p class="review-text">I used to be terrified of writing English paragraphs. After just a few months with Jerin Ma'am, I can write confidently. She makes complex things feel so simple and approachable.</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar avatar-b">N</div>
+        <div>
+          <span class="reviewer-name">Nusrat Jahan</span>
+          <span class="reviewer-class">College Student, Year 1</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card reveal">
+      <div class="stars">★★★★★</div>
+      <span class="review-quote-mark">"</span>
+      <p class="review-text">Ma'am's explanation of tenses and parts of speech finally made sense to me. I had struggled for years, and within months of her teaching I was getting full marks in grammar questions.</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar avatar-c">T</div>
+        <div>
+          <span class="reviewer-name">Tahsin Morshed</span>
+          <span class="reviewer-class">School Student, Class 9</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card reveal">
+      <div class="stars">★★★★★</div>
+      <span class="review-quote-mark">"</span>
+      <p class="review-text">What I love most about Jerin Ma'am is her patience. She never makes you feel bad for not knowing something. She encourages you to ask questions and explains until you truly understand.</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar avatar-d">S</div>
+        <div>
+          <span class="reviewer-name">Sadia Islam</span>
+          <span class="reviewer-class">HSC Student, Humanities</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card reveal">
+      <div class="stars">★★★★★</div>
+      <span class="review-quote-mark">"</span>
+      <p class="review-text">Her exam preparation classes were exactly what I needed. She taught us exactly what to write, how to structure answers, and which topics to prioritize. I passed with flying colors!</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar avatar-e">M</div>
+        <div>
+          <span class="reviewer-name">Mehedi Hasan</span>
+          <span class="reviewer-class">SSC Graduate</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section class="contact" id="contact">
+  <div class="reveal">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="section-title">Let's Start Your<br><em>English Journey</em></h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <p class="contact-cta">
+        Whether you're a student looking to improve your English, a parent seeking guidance, or a school looking for an experienced instructor — I'd love to hear from you.
+      </p>
+      <p class="section-sub" style="margin-bottom: 2rem;">
+        I welcome inquiries about individual tutoring sessions, batch classes, exam preparation, and grammar workshops. Reach out and let's discuss how I can help.
+      </p>
+      <div class="contact-method">
+        <div class="cm-icon">✉️</div>
+        <div>
+          <div class="cm-label">Email</div>
+          <div class="cm-value">jerinjotee@example.com</div>
+        </div>
+      </div>
+      <div class="contact-method">
+        <div class="cm-icon">📍</div>
+        <div>
+          <div class="cm-label">Location</div>
+          <div class="cm-value">Bangladesh</div>
+        </div>
+      </div>
+      <div class="contact-method">
+        <div class="cm-icon">🏫</div>
+        <div>
+          <div class="cm-label">Institutions</div>
+          <div class="cm-value">Technical School & College | TTTC</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form reveal" id="contactForm">
+      <div class="form-title">Send a Message</div>
+      <div class="form-subtitle">I typically respond within 24 hours.</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="e.g. Tasfia Rahman">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+880 1X XX XX XXXX">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>Student Level</label>
+        <select>
+          <option value="">Select Level</option>
+          <option>School — Class 6-8</option>
+          <option>School — Class 9-10 (SSC)</option>
+          <option>College — Class 11-12 (HSC)</option>
+          <option>Grammar Support</option>
+          <option>Exam Preparation</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Your Message</label>
+        <textarea placeholder="Tell me about your learning goals or any questions you have..."></textarea>
+      </div>
+      <button class="form-submit" onclick="submitForm()">Send Message ✦</button>
+      <div class="form-success" id="formSuccess">
+        ✦ Thank you! Your message has been sent. I will get back to you soon.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">Jerin Hany <span>Tahsina Jotee</span></div>
+      <p class="footer-tagline">
+        Dedicated English Instructor with a passion for empowering students through language, grammar, and confidence-building across schools and colleges in Bangladesh.
+      </p>
+    </div>
+    <div>
+      <div class="footer-heading">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#qualifications">Qualifications</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#reviews">Student Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Services</div>
+      <ul class="footer-links">
+        <li><a href="#services">School English</a></li>
+        <li><a href="#services">College English</a></li>
+        <li><a href="#services">Grammar Support</a></li>
+        <li><a href="#services">Exam Preparation</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 <span>Jerin Hany Tahsina Jotee</span> · English Instructor · All Rights Reserved</div>
+    <div class="footer-made">Designed with ♥ for education</div>
+  </div>
+</footer>
+
+<script>
+  // Scroll progress bar
+  window.addEventListener('scroll', () => {
+    const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    document.getElementById('scrollBar').style.width = scrolled + '%';
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Mobile menu
+  function toggleMenu() {
+    const menu = document.getElementById('navMenu');
+    menu.classList.toggle('open');
+  }
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('navMenu').classList.remove('open');
+    });
+  });
+
+  // Form submit
+  function submitForm() {
+    const btn = document.querySelector('.form-submit');
+    btn.textContent = 'Sending...';
+    btn.style.opacity = '0.8';
+    setTimeout(() => {
+      btn.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }, 1200);
+  }
+
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 80) {
+      nav.style.padding = '0.8rem 5%';
+      nav.style.boxShadow = '0 4px 30px rgba(44,36,32,0.08)';
+    } else {
+      nav.style.padding = '1.2rem 5%';
+      nav.style.boxShadow = 'none';
+    }
+  });
+
+  // Stagger service cards
+  document.querySelectorAll('.service-card').forEach((card, i) => {
+    card.style.transitionDelay = (i * 0.1) + 's';
+  });
+</script>
+</body>
+</html>
